@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,13 +14,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: MinhaPaginaInicial(),
+      home: const MinhaPaginaInicial(),
     );
   }
 }
 
 class MinhaPaginaInicial extends StatefulWidget {
+  const MinhaPaginaInicial({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MinhaPaginaInicialState createState() => _MinhaPaginaInicialState();
 }
 
@@ -35,7 +40,7 @@ class _MinhaPaginaInicialState extends State<MinhaPaginaInicial> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Botão'),
+        title: const Text('Botão'),
       ),
       body: Container(
         color: fundoBranco ? Colors.white : Colors.black,
@@ -56,21 +61,20 @@ class MeuBotaoPersonalizado extends StatelessWidget {
   final String texto;
   final VoidCallback aoClicar;
 
-  MeuBotaoPersonalizado({required this.icone, required this.texto, required this.aoClicar});
+  const MeuBotaoPersonalizado({super.key, required this.icone, required this.texto, required this.aoClicar});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: aoClicar,
       style: ElevatedButton.styleFrom(
-        primary: Colors.purple,
-        onPrimary: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        foregroundColor: Colors.white, backgroundColor: Colors.purple,
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Text(texto),
         ],
       ),
